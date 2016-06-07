@@ -1,8 +1,5 @@
-# Distributed with a free-will license.
-# Use it any way you want, profit or free, provided it fits in the licenses of its associated works.
-# MMA8452Q
-# This code is designed to work with the MMA8452Q_I2CS I2C Mini Module available from ControlEverything.com.
-# https://www.controleverything.com/content/Accelorometer?sku=MMA8452Q_I2CS#tabs-0-product_tabset-2
+# MMA8452Q setup and query code from ControlEverything
+# https://github.com/ControlEverythingCommunity
 
 import os
 import smbus
