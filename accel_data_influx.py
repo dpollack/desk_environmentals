@@ -4,10 +4,18 @@
 import os
 import smbus
 import time
+import signal
+import sys
 from datetime import datetime
 from influxdb import InfluxDBClient
 
-fname = 'accel_data_out'
+def signal_handler(signal, frame):
+        print 'You pressed Ctrl+C!'
+        sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
+print 'Press Ctrl+C to exit'
+
+#fname = 'accel_data_out'
 
 #try:
 #    os.unlink(fname)
@@ -37,7 +45,8 @@ i = 0
 #fout = open(fname, 'w')
 #fout.write( "time, X, Y, Z\n" )
 
-while i < 288000: 
+# while i < 432000: # 6 hour runtime
+while True: # continuous run
 
     # MMA8452Q address, 0x1D(28)
     # Read data back from 0x00(0), 7 bytes
