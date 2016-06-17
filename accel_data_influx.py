@@ -16,7 +16,6 @@ signal.signal(signal.SIGINT, signal_handler)
 print 'Press Ctrl+C to exit'
 
 #fname = 'accel_data_out'
-
 #try:
 #    os.unlink(fname)
 #except:
@@ -62,14 +61,15 @@ while True: # continuous run
     if yAccl > 2047 :
         yAccl -= 4096
 
-    zAccl = (data[5] * 256 + data[6]) / 16
+    zAccl = ((data[5] * 256 + data[6]) / 16) - 1000
     if zAccl > 2047 :
         zAccl -= 4096
 
-    # Output data to screen
+    # Output data to DB
     ts = int(round(time.time() * 1000))
     fmtts = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3]
     #print ts
+    # print a timestamp to show activity
     if i%200 == 0:
         print fmtts
     #print "Acceleration in X-Axis : %d" %xAccl
